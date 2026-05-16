@@ -87,10 +87,14 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void SetStamina(float amount);
+	
 	//Function that decreases Player Stats
 	UFUNCTION()
 	void DecreaseStats();
 
+	//Function to give player resources
+	UFUNCTION()
+	void GiveResources(float amount, FString resourceType);
 
 
 };
