@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "Camera/CameraComponent.h"
 #include "Resources_M.h"
+#include "Kismet/GameplayStatics.h"
 #include "PlayerChar.generated.h"
 
 
@@ -77,6 +78,9 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Resources")
 	TArray<FString> ResourcesNameArray;
+
+	UPROPERTY(EditAnywhere, Category = "HitMarker")
+	UMaterialInterface* hitDecal;
 
 	//Functions to set Player Stats
 	UFUNCTION(BlueprintCallable)
