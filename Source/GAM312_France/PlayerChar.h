@@ -51,4 +51,46 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* PlayerCamComp;
 
+	//Declaration of Player Stats
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Stats")
+	float Health = 100.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Stats")
+	float Hunger = 100.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Stats")
+	float Stamina = 100.0f;
+
+	//Declaration of Player Resources
+	UPROPERTY(EditAnywhere, Category = "Resources")
+	int Wood;
+
+	UPROPERTY(EditAnywhere, Category = "Resources")
+	int Stone;
+
+	UPROPERTY(EditAnywhere, Category = "Resources")
+	int Berry;
+
+	//Arrays to hold Resource Names and Amounts
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Resources")
+	TArray<int> ResourcesArray;
+
+	UPROPERTY(EditAnywhere, Category = "Resources")
+	TArray<FString> ResourcesNameArray;
+
+	//Functions to set Player Stats
+	UFUNCTION(BlueprintCallable)
+	void SetHealth(float amount);
+
+	UFUNCTION(BlueprintCallable)
+	void SetHunger(float amount);
+
+	UFUNCTION(BlueprintCallable)
+	void SetStamina(float amount);
+	//Function that decreases Player Stats
+	UFUNCTION()
+	void DecreaseStats();
+
+
+
 };

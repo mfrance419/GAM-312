@@ -16,6 +16,12 @@ APlayerChar::APlayerChar()
 	//Camera Rotation
 	PlayerCamComp->bUsePawnControlRotation = true;
 
+	//Sets size of Resources Array to 3
+	ResourcesArray.SetNum(3);
+	//Sets Resource Names in ResourcesNameArray
+	ResourcesNameArray.Add(TEXT("Wood"));
+	ResourcesNameArray.Add(TEXT("Stone"));
+	ResourcesNameArray.Add(TEXT("Berry"));
 
 }
 
@@ -23,6 +29,10 @@ APlayerChar::APlayerChar()
 void APlayerChar::BeginPlay()
 {
 	Super::BeginPlay();
+
+	//Timer to decrease player stats over time
+	FTimerHandle StatsTimerHandle;
+	GetWorld()->GetTimerManager().SetTimer(StatsTimerHandle, this, &APlayerChar::DecreaseStats, 2.0f, true);
 	
 }
 
@@ -75,3 +85,49 @@ void APlayerChar::FindObject()
 {
 }
 
+//Definition of Player Stats functions
+void APlayerChar::SetHealth(float amount)
+{
+	if (Health + amount < 100){
+		Health = Health + amount;
+	}
+	else {
+		Health = 100;
+	}
+}
+
+void APlayerChar::SetHunger(float amount)
+{
+	//If hunger is less than 100, add the amount to hunger, otherwise set it to 100.
+	if (Hunger + amount < 100) {
+		Hunger = Hunger + amount;
+	}
+	else {
+		Hunger = 100;
+	}
+}
+
+void APlayerChar::SetStamina(float amount)
+{
+	//If stamina is less than 100, add the amount to stamina, otherwise set it to 100.
+	if (Stamina + amount < 100) {
+		Stamina = Stamina + amount;
+	}
+	else {
+		Stamina = 100;
+	}
+}
+
+void APlayerChar::DecreaseStats()
+{
+	//If Hunger is greater than 0, decrease hunger by 1.
+	if (Hunger > 0) {
+		SetHunger(-1.0f);
+}
+	//Increase stamina by 10.
+	SetStamina(10.0f);
+
+	if (Hunger <= 0) {
+		SetHealth(-3.0f);
+	}
+}
