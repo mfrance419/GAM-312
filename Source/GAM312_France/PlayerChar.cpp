@@ -83,6 +83,44 @@ void APlayerChar::StopJump()
 //Player Interaction
 void APlayerChar::FindObject()
 {
+	//Create line trace
+	FHitResult HitResult;
+	FVector StartLocation = PlayerCamComp->GetComponentLocation();
+	FVector Direction = PlayerCamComp->GetForwardVector() * 800.0f;
+	FVector EndLocation = StartLocation + Direction;
+	//Query Parameters for line trace
+	FCollisionQueryParams QueryParams;
+	QueryParams.AddIgnoredActor(this);
+	QueryParams.bTraceComplex = true;
+	QueryParams.bReturnFaceIndex = true;
+
+	//Check if line trace is valid then reduces the total resource
+	if (GetWorld()->LineTraceSingleByChannel(HitResult, StartLocation, EndLocation, ECC_Visibility, QueryParams))
+	{
+		AResources_M* HitResource = Cast<AResources_M>(HitResult.GetActor());
+
+		if(HitResource)
+		{
+			FString hitName = HitResource->resourceName;
+			int resourceValue = HitResource->resourceAmount;
+
+			HitResource->totalResource = HitResource->totalResource - resourceValue;
+
+			if (HitResource->totalResource > resourceValue)
+			{
+				GiveResources(resourceValue, hitName);
+				check(GEngine != nullptr);
+				GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Resource Collected"));
+			}
+			else
+			{
+				HitResource->Destroy();
+				check(GEngine != nullptr);
+				GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Resource Depleted"));
+			}
+		}
+	}
+
 }
 
 //Definition of Player Stats functions
@@ -130,4 +168,17 @@ void APlayerChar::DecreaseStats()
 	if (Hunger <= 0) {
 		SetHealth(-3.0f);
 	}
+}
+
+void APlayerChar::GiveResources(float amount, FString resourceType)
+{
+	if (resourceType == "Wood") {
+		ResourcesArray[0] = ResourcesArray[0] + amount;
+	}
+	else if (resourceType == "Stone") {
+		ResourcesArray[1] = ResourcesArray[1] + amount;
+	}
+	else if (resourceType == "Berry") {
+		ResourcesArray[2] = ResourcesArray[2] + amount;
+	}	
 }
