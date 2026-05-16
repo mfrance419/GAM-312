@@ -99,6 +99,9 @@ void APlayerChar::FindObject()
 	{
 		AResources_M* HitResource = Cast<AResources_M>(HitResult.GetActor());
 
+		if (Stamina > 5.0f)
+		{
+
 		if(HitResource)
 		{
 			FString hitName = HitResource->resourceName;
@@ -111,6 +114,10 @@ void APlayerChar::FindObject()
 				GiveResources(resourceValue, hitName);
 				check(GEngine != nullptr);
 				GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Resource Collected"));
+
+				UGameplayStatics::SpawnDecalAtLocation(GetWorld(), hitDecal, FVector(10.0f, 10.0f, 10.0f), HitResult.Location, FRotator(-90.0f, 0.0f, 0.0f), 2.0f);
+
+				SetStamina(-5.0f);
 			}
 			else
 			{
@@ -120,6 +127,7 @@ void APlayerChar::FindObject()
 			}
 		}
 	}
+}
 
 }
 
