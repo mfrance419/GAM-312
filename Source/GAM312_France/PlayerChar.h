@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Camera/CameraComponent.h"
+#include "Resources_M.h"
 #include "PlayerChar.generated.h"
 
 
@@ -27,21 +28,25 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
 	//Movement Functions
 	UFUNCTION()
 	void MoveForward(float axisValue);
 
 	UFUNCTION()
 	void MoveRight(float axisValue);
+
 	//Jumping Functions
 	UFUNCTION()
 	void StartJump();
 
 	UFUNCTION()
 	void StopJump();
+
 	//interaction Functions
 	UFUNCTION()
 	void FindObject();
+	
 	//Camera Property
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* PlayerCamComp;
