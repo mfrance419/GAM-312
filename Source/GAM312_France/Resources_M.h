@@ -24,7 +24,7 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
+	//Defaults for Materials
 	UPROPERTY(EditAnywhere)
 	FString resourceName = "Wood";
 
@@ -36,7 +36,7 @@ public:
 
 	UPROPERTY()
 	FText tempText;
-
+	//Adds Text and Mesh components
 	UPROPERTY(EditAnywhere)
 	UTextRenderComponent* ResourceNameTxt;
 

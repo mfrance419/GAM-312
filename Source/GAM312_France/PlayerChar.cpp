@@ -98,7 +98,7 @@ void APlayerChar::FindObject()
 	if (GetWorld()->LineTraceSingleByChannel(HitResult, StartLocation, EndLocation, ECC_Visibility, QueryParams))
 	{
 		AResources_M* HitResource = Cast<AResources_M>(HitResult.GetActor());
-
+		//Check if player has enough stamina
 		if (Stamina > 5.0f)
 		{
 
