@@ -23,10 +23,11 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
+	// The mesh component for the building part
 	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* Mesh;
 
+	// The arrow component for the pivot point
 	UPROPERTY(EditAnywhere)
 	UArrowComponent* PivotArrow;
 };
