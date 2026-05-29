@@ -8,6 +8,7 @@
 #include "Resources_M.h"
 #include "Kismet/GameplayStatics.h"
 #include "BuildingPart.h"
+#include "PlayerWidget.h"
 #include "PlayerChar.generated.h"
 
 
@@ -93,6 +94,9 @@ public:
 
 	UPROPERTY()
 	ABuildingPart* spawnedPart;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPlayerWidget* PlayerUI;
 
 	//Functions to set Player Stats
 	UFUNCTION(BlueprintCallable)

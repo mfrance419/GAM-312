@@ -56,6 +56,22 @@
 		"directory": "D:\\UE_5.6\\Engine\\Source"
 	},
 	{
+		"file": "C:\\Users\\irnin\\Documents\\Unreal Projects\\GAM312_France\\Source\\GAM312_France\\PlayerWidget.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\irnin\\Documents\\Unreal Projects\\GAM312_France\\.vscode\\compileCommands_GAM312_France\\GAM312_France.1.rsp"
+		],
+		"directory": "D:\\UE_5.6\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\irnin\\Documents\\Unreal Projects\\GAM312_France\\Source\\GAM312_France\\PlayerWidget.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\irnin\\Documents\\Unreal Projects\\GAM312_France\\.vscode\\compileCommands_GAM312_France\\GAM312_France.1.rsp"
+		],
+		"directory": "D:\\UE_5.6\\Engine\\Source"
+	},
+	{
 		"file": "C:\\Users\\irnin\\Documents\\Unreal Projects\\GAM312_France\\Source\\GAM312_France\\Resources_M.cpp",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
