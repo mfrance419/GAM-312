@@ -16,7 +16,7 @@ class GAM312_FRANCE_API UPlayerWidget : public UUserWidget
 
 
 public:
-
+//Function to update player bars
 UFUNCTION(BlueprintImplementableEvent)
 	void UpdateBars(float Health1, float Hunger1, float Stamina1);
 };
