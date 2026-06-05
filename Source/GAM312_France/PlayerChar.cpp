@@ -132,7 +132,17 @@ void APlayerChar::FindObject()
 					{
 						GiveResources(resourceValue, hitName);
 						matsCollected = matsCollected + resourceValue;
-						ObjWidget->UpdatematOBJ(matsCollected);
+
+						if (ensure(ObjWidget) {
+							GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Updating Widget"));
+							ObjWidget->UpdatematOBJ(matsCollected);
+						}
+						else{
+							GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Error"));
+						}
+
+
+
 						check(GEngine != nullptr);
 						GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Resource Collected"));
 
