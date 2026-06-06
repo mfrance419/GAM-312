@@ -15,7 +15,7 @@ class GAM312_FRANCE_API UObjectiveWidget : public UUserWidget
 	GENERATED_BODY()
 	
 	public:
-
+	//Functions for update UI
 	UFUNCTION(BlueprintImplementableEvent)
 	void UpdatematOBJ(float matsCollected);
 

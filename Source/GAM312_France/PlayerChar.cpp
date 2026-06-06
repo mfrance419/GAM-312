@@ -37,6 +37,7 @@ void APlayerChar::BeginPlay()
 	
 	if(ObjWidget)
 	{
+		//Set initial values for objective widget
 		ObjWidget->UpdatematOBJ(0.0f);
 		ObjWidget->UpdatebuildObj(0.0f);
 	}
@@ -131,6 +132,7 @@ void APlayerChar::FindObject()
 					if (HitResource->totalResource > resourceValue)
 					{
 						GiveResources(resourceValue, hitName);
+						//Add increase materials collected variable and update objective widget
 						matsCollected = matsCollected + resourceValue;
 						ObjWidget->UpdatematOBJ(matsCollected);
 						
@@ -154,6 +156,7 @@ void APlayerChar::FindObject()
 	}
 	else
 	{
+		//Increase the number of objects built and update objective widget
 		isBuilding = false;
 		objectsBuilt = objectsBuilt + 1;
 		ObjWidget->UpdatebuildObj(objectsBuilt);
