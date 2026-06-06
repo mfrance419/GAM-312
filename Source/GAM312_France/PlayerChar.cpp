@@ -35,6 +35,11 @@ void APlayerChar::BeginPlay()
 	FTimerHandle StatsTimerHandle;
 	GetWorld()->GetTimerManager().SetTimer(StatsTimerHandle, this, &APlayerChar::DecreaseStats, 2.0f, true);
 	
+	if(ObjWidget)
+	{
+		ObjWidget->UpdatematOBJ(0.0f);
+		ObjWidget->UpdatebuildObj(0.0f);
+	}
 }
 
 // Called every frame
@@ -122,16 +127,20 @@ void APlayerChar::FindObject()
 					int resourceValue = HitResource->resourceAmount;
 
 					HitResource->totalResource = HitResource->totalResource - resourceValue;
-
+					
 					if (HitResource->totalResource > resourceValue)
 					{
 						GiveResources(resourceValue, hitName);
+						matsCollected = matsCollected + resourceValue;
+						ObjWidget->UpdatematOBJ(matsCollected);
+						
 						check(GEngine != nullptr);
 						GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Resource Collected"));
 
 						UGameplayStatics::SpawnDecalAtLocation(GetWorld(), hitDecal, FVector(10.0f, 10.0f, 10.0f), HitResult.Location, FRotator(-90.0f, 0.0f, 0.0f), 2.0f);
 
 						SetStamina(-5.0f);
+						
 					}
 					else
 					{
@@ -146,6 +155,8 @@ void APlayerChar::FindObject()
 	else
 	{
 		isBuilding = false;
+		objectsBuilt = objectsBuilt + 1;
+		ObjWidget->UpdatebuildObj(objectsBuilt);
 	}
 
 
