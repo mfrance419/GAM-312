@@ -10,6 +10,8 @@ APlayerChar::APlayerChar()
 	PrimaryActorTick.bCanEverTick = true;
 
 	//Initial Setup of Camera Component.
+	//Unreal Engine has a built in library for camera components which makes it much easier to set up a camera.
+	//The Camera Libary creates a more unified and modular system for camara componenants and allows for more customization and control over the camera.
 	PlayerCamComp = CreateDefaultSubobject<UCameraComponent>(TEXT("First Person Cam"));
 	//Attach Camera to Mesh head
 	PlayerCamComp->SetupAttachment(GetMesh(), "head");
@@ -102,6 +104,8 @@ void APlayerChar::StopJump()
 void APlayerChar::FindObject()
 {
 	//Create line trace
+	//Linear Alegbra is used to create a line trace between the player and where the player is looking.
+	//The trace is multiplied by 800 and then when the trace hits an object it will return the hit result
 	FHitResult HitResult;
 	FVector StartLocation = PlayerCamComp->GetComponentLocation();
 	FVector Direction = PlayerCamComp->GetForwardVector() * 800.0f;
