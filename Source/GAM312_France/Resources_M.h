@@ -25,13 +25,13 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	//Defaults for Materials
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FString resourceName = "Wood";
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int resourceAmount = 5;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int totalResource = 100;
 
 	UPROPERTY()
